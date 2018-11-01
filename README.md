@@ -1,6 +1,6 @@
 # Api
 
-## How is work ?
+## How it works ?
 
 1. Step one : `git clone` into a folder.
 
@@ -8,7 +8,7 @@
 
 3.  Step one : on the same folder, run `php -S localhost:YOUR_PORT` (exemple:8000) or run wamp, xamp etc.
 
-## Read your api(ex for YOUR_PORT = 8080):
+## Read your api (ex for YOUR_PORT = 8080):
 
     * GET http://localhost:8080/api/v1/artists
     
