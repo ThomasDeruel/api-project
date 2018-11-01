@@ -14,13 +14,11 @@ class Artists extends HelpersGlobal{
                   ORDER BY `id` ASC";
         $stmt = $this->_conn->prepare($query);
         $stmt->execute();
-        $this->arrayCount($stmt);
-        $this->newData($stmt);
+        $this->arrayCount($stmt);//returns true & "success" of your data if verified, or error
+        $this->newData($stmt);// creates a new key :"data"
         return $this->data;
     }
-    /*public function readById($id){
-        $this->_params = $id;
-    }*/
+
     private function newData($stmt){
         $this->data['data'] = array();
         while($row = $stmt->fetch()){
