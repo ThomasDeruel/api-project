@@ -22,9 +22,9 @@ class Musics extends HelpersGlobal{
     public function readById($id){
         $query = "SELECT `id`, `title`, `group`
                  FROM {$this->_table}
-                 WHERE `id` = `:id`";
+                 WHERE `id` = :id ";
         $stmt = $this->_conn->prepare($query);
-        $stmt = bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(":id", $id);
         $stmt->execute();
         $this->arrayCount($stmt);//returns true & "success" of your data if verified, or error
         $this->newData($stmt);// creates a new key :"data"
