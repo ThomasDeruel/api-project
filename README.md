@@ -10,7 +10,7 @@
 
 ## Read your api (ex for YOUR_PORT = 8080):
 
-    * GET http://localhost:8080/api/v1/artists
+    * GET http://localhost:8080/api/v1/musics
     
 
 ## Config
@@ -19,6 +19,6 @@
 
 [x] check if your data is empty
 
-[ ] check the properties (artists/instruments/...)
+[ ] check the properties (musics/instruments/...)
 
 [ ] check url
