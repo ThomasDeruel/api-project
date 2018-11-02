@@ -1,15 +1,15 @@
 <?php
 include_once'../../helpers/HelpersGlobal.php';
-class Artists extends HelpersGlobal{
+class Musics extends HelpersGlobal{
     private $_conn;
-    private $_table = "artists";
+    private $_table = "musics";
     
     public function __construct($db){
         $this->_conn = $db;
     }
 
     public function read(){
-        $query = "SELECT `id`,`title`,`music_group` 
+        $query = "SELECT `id`,`title`,`group` 
                   FROM {$this->_table}
                   ORDER BY `id` ASC";
         $stmt = $this->_conn->prepare($query);
@@ -25,7 +25,7 @@ class Artists extends HelpersGlobal{
             $newData = array(
                 "id"=> $row['id'],
                 "title" => $row['title'],
-                "music_groupe" => $row['music_group']
+                "music_groupe" => $row['group']
             );
             array_push($this->data['data'],$newData);
         }
