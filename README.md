@@ -10,7 +10,8 @@
 
 ## Read your api (ex for YOUR_PORT = 8080):
 
-    * GET http://localhost:8080/api/v1/musics
+    * GET http://localhost:8080/api/v1/musics (all music)
+    * GET http://localhost:8080/api/v1/musics?id 
     
 
 ## Config
