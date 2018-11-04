@@ -19,6 +19,18 @@ class Musics extends HelpersGlobal{
         return $this->data;
     }
 
+    public function readById($id){
+        $query = "SELECT `id`, `title`, `group`
+                 FROM {$this->_table}
+                 WHERE `id` = :id ";
+        $stmt = $this->_conn->prepare($query);
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+        $this->arrayCount($stmt);//returns true & "success" of your data if verified, or error
+        $this->newData($stmt);// creates a new key :"data"
+        return $this->data;
+    }
+
     private function newData($stmt){
         $this->data['data'] = array();
         while($row = $stmt->fetch()){

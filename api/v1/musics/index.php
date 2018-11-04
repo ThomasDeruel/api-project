@@ -8,7 +8,14 @@ include_once'../../models/Musics.php';
 $database = new Database();//prepare connection to pdo
 $pdo = $database->connect();// connected to pdo
 
-$musics = new Musics($pdo); // get 
-$read = $musics->read();
+$musics = new Musics($pdo); // get
+
+if(isset($_GET['id']) && !empty($_GET['id'])){
+    $id = $_GET['id'];
+    $read = $musics->readById($id);
+}else{
+    $read = $musics->read();
+}
+
 
 echo json_encode($read);
