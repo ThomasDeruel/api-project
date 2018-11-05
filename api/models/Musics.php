@@ -17,15 +17,15 @@ class Musics extends HelpersGlobal{
         $stmt = $this->_conn->prepare($query);
         $stmt->execute();
         $this->arrayCount($stmt);//returns true & "success" of your data if verified, or error
-        $this->readTrack();
         $this->newData($stmt);// creates a new key :"data"
         return $this->data;
     }
-    public function readTrack(){
+    private function readTrack(){
         $query = "SELECT
                 tr.id as id,
                 ty.name as `type`,
-                tr.instrument_id
+                tr.instrument_id,
+                tr.id_music
                 FROM tracks tr
                 LEFT JOIN types as ty ON tr.melody_id = ty.id
                 ";
@@ -51,9 +51,7 @@ class Musics extends HelpersGlobal{
                 array_push($tracks[$key]['instruments'],$newData);
             }    
         }
-        echo '<pre>';
-        print_r($tracks);
-        echo '</pre>';
+        return $tracks;
     }
     public function readById($id){
         $query = "SELECT 
@@ -72,13 +70,27 @@ class Musics extends HelpersGlobal{
     }
 
     private function newData($stmt){
+        $arrayTracks = $this->readTrack();       
         $this->data['data'] = array();
-        while($row = $stmt->fetch()){
+        while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            $id = $row['id'];
             $newData = array(
                 "id"=> $row['id'],
                 "title" => $row['title'],
                 "music_groupe" => $row['group']
             );
+            $newData['tracks'] = array();
+            foreach($arrayTracks as $key => $value){
+                $tracks = array();
+                if($value['id_music'] ==  $id){     
+                    $tracks = array(
+                    "id" => $value['id'],
+                    "type" => $value['type'],
+                    "instruments" => $value['instruments']
+                );
+                array_push($newData['tracks'],$tracks);
+               }    
+            }
             array_push($this->data['data'],$newData);
         }
     }
