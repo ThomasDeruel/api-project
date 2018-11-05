@@ -57,8 +57,7 @@ class Musics extends HelpersGlobal{
         $query = "SELECT 
                 `id`, 
                 `title`, 
-                `group`,
-                `id_track`
+                `group`
                  FROM {$this->_table}
                  WHERE `id` = :id ";
         $stmt = $this->_conn->prepare($query);
