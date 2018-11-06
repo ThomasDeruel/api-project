@@ -8,10 +8,10 @@
 
 3.  Step three : on the same folder, run `php -S localhost:YOUR_PORT` or `./server.sh`
 
-## Read your api (ex for YOUR_PORT = 8080):
+## Read your api (ex for YOUR_PORT = 8000):
 
-    * GET http://localhost:8080/api/v1/songs (all music)
-    * GET http://localhost:8080/api/v1/songs?id 
+    * GET http://localhost:8000/api/v1/songs (all music)
+    * GET http://localhost:8000/api/v1/songs?id 
     
 
 ## Config
