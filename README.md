@@ -10,8 +10,8 @@
 
 ## Read your api (ex for YOUR_PORT = 8080):
 
-    * GET http://localhost:8080/api/v1/musics (all music)
-    * GET http://localhost:8080/api/v1/musics?id 
+    * GET http://localhost:8080/api/v1/songs (all music)
+    * GET http://localhost:8080/api/v1/songs?id 
     
 
 ## Config
@@ -19,7 +19,5 @@
 [x] check the database connection
 
 [x] check if your data is empty
-
-[ ] check the properties (musics/instruments/...)
 
 [ ] check url
