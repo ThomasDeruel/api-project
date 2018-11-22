@@ -47,8 +47,6 @@ class Songs extends HelpersGlobal{
             $stmt2 = $this->_conn->prepare($query);
             $stmt2->execute();
 
-            
-
             while($row = $stmt2 ->fetch()){
                 $sources = $this->listSourceById($row['id']);
 
@@ -72,7 +70,16 @@ class Songs extends HelpersGlobal{
         ";
         $stmt = $this->_conn->prepare($query);
         $stmt->execute();
-        return $stmt->fetchAll();
+        $source = array();
+        while($row = $stmt->fetch()) {
+            $newArray = array();
+            $newArray = [
+                "src" => $row["src"],
+                "type" => $row["type"]
+            ];
+            array_push($source,$newArray);
+        }
+        return $source;
     }
     private function readTrack(){
         $query = "SELECT
