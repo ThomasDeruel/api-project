@@ -45,17 +45,32 @@ class Songs extends HelpersGlobal{
                 WHERE ins.id_tracks = {$value['id_instrument']};
                 ";
             $stmt2 = $this->_conn->prepare($query);
-            $stmt2 ->execute();
+            $stmt2->execute();
+
+            $sources = $this->listSourceById($value['id_instrument']);
+
             while($row = $stmt2 ->fetch()){
                 $newData = array();
                 $newData = array(
                     "id" => $row['id'],
-                    "name" => $row['name']
+                    "name" => $row['name'],
+                    "sources" => $sources
                 );
                 array_push($tracks[$key]['instruments'],$newData);
             }    
         }
         return $tracks;               
+    }
+    public function listSourceById($id_instrument){
+        $query = "SELECT
+        src,
+        type
+        FROM source
+        WHERE id_instrument = {$id_instrument}
+        ";
+        $stmt = $this->_conn->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll();
     }
     private function readTrack(){
         $query = "SELECT
