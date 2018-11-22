@@ -1,6 +1,6 @@
 <?php
-//header('Access-Control-Allow-Origin: *');
-//header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
+header('Content-Type: application/json');
 
 include_once'../../config/Database.php';
 include_once'../../models/Songs.php';
@@ -16,7 +16,5 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 }else{
     $read = $songs->read();
 }
-echo"<pre>";
-print_r($read);
-echo"</pre>";
-//echo json_encode($read);
+
+echo json_encode($read);
