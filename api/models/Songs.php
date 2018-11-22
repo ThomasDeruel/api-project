@@ -39,17 +39,19 @@ class Songs extends HelpersGlobal{
         foreach($tracks as $key => $value) {
             $tracks[$key]['instruments'] = array();
             $query = "SELECT
-                `id`,
-                `name`
+                ins.id as `id`,
+                ins.name as `name`
                 FROM instruments ins
                 WHERE ins.id_tracks = {$value['id_instrument']};
                 ";
             $stmt2 = $this->_conn->prepare($query);
             $stmt2->execute();
 
-            $sources = $this->listSourceById($value['id_instrument']);
+            
 
             while($row = $stmt2 ->fetch()){
+                $sources = $this->listSourceById($row['id']);
+
                 $newData = array();
                 $newData = array(
                     "id" => $row['id'],
@@ -61,12 +63,12 @@ class Songs extends HelpersGlobal{
         }
         return $tracks;               
     }
-    public function listSourceById($id_instrument){
+    public function listSourceById($id){
         $query = "SELECT
         src,
         type
         FROM source
-        WHERE id_instrument = {$id_instrument}
+        WHERE id_instrument = {$id}
         ";
         $stmt = $this->_conn->prepare($query);
         $stmt->execute();
