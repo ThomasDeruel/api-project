@@ -11,7 +11,8 @@
 ## Read your api (ex for YOUR_PORT = 8000):
 
     * GET http://localhost:8000/api/v1/songs (all music)
-    * GET http://localhost:8000/api/v1/songs?id 
+    * GET http://localhost:8000/api/v1/songs?id
+    * GET http://localhost:8000/api/v1/map :new:
     
 
 ## Config
