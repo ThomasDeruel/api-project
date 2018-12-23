@@ -32,14 +32,11 @@ class Map extends HelpersGlobal{
         while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             $newData = array(
                 "id"=> $row['id'],
-                "instrument" => array(
-                    "id" => $row['id_instrument'],
-                    "name" => $row['instrumentName']
-                ),
-                "map" => array(
-                    "place" => $row['name'],
-                    "coordinates" => [$row['lat'],$row['lng']]
-                )
+                "name" => $row['name'],
+                "markerOffset" => intval($row['markerOffset']),
+                "instrumentId" => $row['id_instrument'],
+                "instrumentName" => $row['instrumentName'],
+                "coordinates" => [floatval($row['lat']),floatval($row['lng'])]
             );
             array_push($this->data['data'],$newData);
         }
