@@ -12,7 +12,9 @@
 
     * GET http://localhost:8000/api/v1/songs (all music)
     * GET http://localhost:8000/api/v1/songs?id
-    * GET http://localhost:8000/api/v1/map
+    * GET http://localhost:8000/api/v1/instruments (v0.3)
+    * GET http://localhost:8000/api/v1/instruments?id (v0.3)
+
     
 
 ## Config
