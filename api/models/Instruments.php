@@ -22,7 +22,8 @@ class Instruments extends HelpersGlobal{
                  `descriptionTitle`,
                  `descriptionContent`,
                  `audioPath`,
-                 `audioType`
+                 `audioType`,
+                 `imgBig`
                  FROM {$this->_table}
                  WHERE `id` = {$id};";
         $stmt = $this->_conn->prepare($query);
@@ -45,7 +46,8 @@ class Instruments extends HelpersGlobal{
                  `descriptionTitle`,
                  `descriptionContent`,
                  `audioPath`,
-                 `audioType`
+                 `audioType`,
+                 `imgBig`
                  FROM {$this->_table};";
         $stmt = $this->_conn->prepare($query);
         $stmt->execute() /*|| print_r( $stmt->errorInfo())*/;
@@ -60,6 +62,7 @@ class Instruments extends HelpersGlobal{
             $newData = array(
                 "id"=> $row['id'],
                 "name" => $row['name'],
+                "image" => $row['imgBig'],
                 "pronounciation" => $row['pronounciation'],
                 "type" => $row['type'],
                 "origin" => $row['origin'],

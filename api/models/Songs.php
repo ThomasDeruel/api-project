@@ -98,7 +98,9 @@ class Songs extends HelpersGlobal{
             $tracks[$key]['instruments'] = array();
             $query = "SELECT
                 `id`,
-                `name`
+                `name`,
+                `imgSmall`,
+                `descriptionContent`
                 FROM instruments ins
                 WHERE ins.id_tracks = {$value['id_instrument']};
                 ";
@@ -108,7 +110,9 @@ class Songs extends HelpersGlobal{
                 $newData = array();
                 $newData = array(
                     "id" => $row['id'],
-                    "name" => $row['name']
+                    "name" => $row['name'],
+                    'small_img' => $row['imgSmall'],
+                    'description' => $row['descriptionContent']
                 );
                 array_push($tracks[$key]['instruments'],$newData);
             }    
